@@ -5,7 +5,18 @@
 // 4. Include an edit button and form on the dedicated post page that allows admins to edit it (not actual possible to edit post resource on https://jsonplaceholder.typicode.com/) but you can fake it however you'd like
 // 5. Use the Options API at least once (but also feel free to use CAPI if desired)
 // 6. Feel free to work directly in this StackBlitz project or start your own project locally and share it via Github
+import TheNavbar from './components/TheNavbar.vue';
+export default {
+  components: {
+    TheNavbar
+  }
+}
 </script>
 <template>
-  <RouterView />
+  <header>
+    <TheNavbar />
+  </header>
+  <main>
+    <RouterView />
+  </main>
 </template>

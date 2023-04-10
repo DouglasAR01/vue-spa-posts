@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Posts</h1>
+  <div class="container p-4">
+    <h1>Latest posts</h1>
     <PostList :posts="posts" v-if="!loading"/>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   async created() {
     this.loading = true;
     try {
-      const r = await fetch("https://jsonplaceholder.typicode.com/posts");
+      const r = await fetch("https://jsonplaceholder.typicode.com/posts?_expand=user");
       this.posts = await r.json();
     } catch (e) {
       console.log(e);

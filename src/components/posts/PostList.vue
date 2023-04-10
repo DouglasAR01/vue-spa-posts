@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="list-group">
     <PostListItem v-for="post in posts" :key="post.id" :post="post"></PostListItem>
   </ul>
 </template>

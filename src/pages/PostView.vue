@@ -8,7 +8,11 @@
         </div>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-primary" @click="editing = !editing">{{ editing ? "Save" : "Edit" }}</button>
+        <button class="btn btn-primary" @click="() => editing = !editing">
+          <i class="bi bi-pencil" v-if="!editing"/>
+          <i class="bi bi-hdd" v-else/>
+          {{ editing ? "Save" : "Edit" }}
+        </button>
       </div>
     </div>
     <hr>

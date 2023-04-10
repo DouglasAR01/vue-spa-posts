@@ -25,7 +25,6 @@ export default {
     try {
       const r = await fetch(`https://jsonplaceholder.typicode.com/users/${this.userId}/posts?_expand=user`);
       let json = await r.json();
-      console.log(json);
       this.posts = json.filter(post => post.id !== this.currentPost);
     } catch (e) {
       console.log(e);

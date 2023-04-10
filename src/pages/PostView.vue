@@ -9,8 +9,8 @@
       </div>
       <div class="col-md-4">
         <button class="btn btn-primary" @click="() => editing = !editing">
-          <i class="bi bi-pencil" v-if="!editing"/>
-          <i class="bi bi-hdd" v-else/>
+          <i class="bi bi-pencil" v-if="!editing" />
+          <i class="bi bi-hdd" v-else />
           {{ editing ? "Save" : "Edit" }}
         </button>
       </div>
@@ -42,15 +42,25 @@ export default {
     }
   },
   async created() {
-    this.loading = true;
-    const id = this.$route.params.id;
-    try {
-      const r = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}?_expand=user`);
-      this.post = await r.json();
-    } catch (e) {
-      console.log(e);
+    await this.loadPost();
+  },
+  methods: {
+    async loadPost() {
+      this.loading = true;
+      const id = this.$route.params.id;
+      try {
+        const r = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}?_expand=user`);
+        this.post = await r.json();
+      } catch (e) {
+        console.log(e);
+      }
+      this.loading = false;
     }
-    this.loading = false;
+  },
+  watch: {
+    '$route.params.id'(newId) {
+      this.loadPost();
+    }
   }
 }
 </script>

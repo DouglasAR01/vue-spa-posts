@@ -26,14 +26,13 @@
       </div>
     </div>
   </article>
-  <article v-else>
-    Loading...
-  </article>
+  <TheLoading :is-loading="loading"/>
 </template>
 <script>
 import PostRelated from '../components/posts/PostRelated.vue';
+import TheLoading from '../components/TheLoading.vue';
 export default {
-  components: { PostRelated },
+  components: { PostRelated, TheLoading },
   data() {
     return {
       editing: false,

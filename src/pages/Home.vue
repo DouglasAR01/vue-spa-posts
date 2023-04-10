@@ -6,18 +6,18 @@
       @limit-update="(n) => postPerPage + n >= 1 ? postPerPage += n : postPerPage" />
     <PostList :posts="posts" />
   </article>
-  <article v-else>
-    Loading...
-  </article>
+  <TheLoading :is-loading="loading"/>
 </template>
 
 <script>
 import PostList from '../components/posts/PostList.vue';
 import ThePaginator from '../components/ThePaginator.vue';
+import TheLoading from '../components/TheLoading.vue';
 export default {
   components: {
     PostList,
-    ThePaginator
+    ThePaginator,
+    TheLoading
   },
   data() {
     return {

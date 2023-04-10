@@ -1,10 +1,9 @@
 <template>
   <article class="container p-4" v-if="!loading">
     <h1>Latest posts</h1>
-    <label for="ppp">Post per page</label>
-    <input type="number" name="ppp" class="form-control mb-2" v-model.number="postPerPage">
     <ThePaginator :current-page="page" :page-limit="postPerPage" :arrayLen="allPosts.length"
-      @page-update="(newPage) => page = newPage" />
+      @page-update="(newPage) => page = newPage"
+      @limit-update="(n) => postPerPage + n >= 1 ? postPerPage += n : postPerPage" />
     <PostList :posts="posts" />
   </article>
   <article v-else>
